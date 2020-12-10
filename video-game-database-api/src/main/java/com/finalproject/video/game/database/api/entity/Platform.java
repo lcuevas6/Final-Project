@@ -1,0 +1,5 @@
+package com.finalproject.video.game.database.api.entity;
+
+public class Platform {
+
+}
