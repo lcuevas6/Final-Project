@@ -12,25 +12,25 @@ import org.springframework.web.bind.annotation.RestController;
 import com.finalproject.video.game.database.api.entity.Review;
 import com.finalproject.video.game.database.api.service.ReviewService;
 
-
 @RestController
 @RequestMapping("/users/{userId}/games/{gameId}/reviews")
 public class ReviewController {
-	
+
 	@Autowired
 	private ReviewService service;
-	
-	@RequestMapping(method=RequestMethod.POST)
-	public ResponseEntity<Object> createReview(@RequestBody Review review, @PathVariable Long userId, @PathVariable Long gameId){
+
+	@RequestMapping(method = RequestMethod.POST)
+	public ResponseEntity<Object> createReview(@RequestBody Review review, @PathVariable Long userId,
+			@PathVariable Long gameId) {
 		try {
 			return new ResponseEntity<Object>(service.createReview(review, userId, gameId), HttpStatus.OK);
 		} catch (Exception e) {
 			return new ResponseEntity<Object>(e.getMessage(), HttpStatus.BAD_REQUEST);
 		}
 	}
-	
-	@RequestMapping(value ="/{reviewId}", method=RequestMethod.DELETE)
-	public ResponseEntity<Object> deleteReview(@PathVariable Long reviewId){
+
+	@RequestMapping(value = "/{reviewId}", method = RequestMethod.DELETE)
+	public ResponseEntity<Object> deleteReview(@PathVariable Long reviewId) {
 		service.deleteReview(reviewId);
 		return new ResponseEntity<Object>("Deleted review with id:" + reviewId, HttpStatus.OK);
 	}
