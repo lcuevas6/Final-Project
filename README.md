@@ -1,2 +1,2 @@
-# Final-Project
-Final Project Group
+# Video Game Database
+Final Group Project
