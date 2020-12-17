@@ -23,8 +23,8 @@ public class ReviewService {
 	@Autowired UserRepository userRepo;
 	
 	public Review createReview(Review review, Long userId, Long gameId) throws Exception{
-		User user = userRepo.findOne(userId);
-		VideoGameName game = gameRepo.findOne(gameId);
+		User user = userRepo.findById(userId).get();
+		VideoGameName game = gameRepo.findById(gameId).get();
 		if (user == null || game == null) {
 			throw new Exception("User or Game does not exist.");
 		}
@@ -35,7 +35,7 @@ public class ReviewService {
 	}
 	
 	public void deleteReview(Long reviewId) {
-		repo.delete(reviewId);
+		repo.deleteById(reviewId);
 	}
 
 }

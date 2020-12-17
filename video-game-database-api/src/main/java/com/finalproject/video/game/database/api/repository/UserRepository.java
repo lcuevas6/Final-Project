@@ -1,5 +1,11 @@
 package com.finalproject.video.game.database.api.repository;
 
-public interface UserRepository {
+import org.springframework.data.repository.CrudRepository;
+
+import com.finalproject.video.game.database.api.entity.User;
+
+public interface UserRepository  extends CrudRepository<User, Long>{
+	
+	
 
 }
