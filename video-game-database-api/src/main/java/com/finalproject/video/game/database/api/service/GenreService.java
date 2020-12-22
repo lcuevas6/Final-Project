@@ -8,7 +8,6 @@ import com.finalproject.video.game.database.api.entity.Genre;
 import com.finalproject.video.game.database.api.entity.VideoGameName;
 import com.finalproject.video.game.database.api.repository.GenreRepository;
 
-import com.finalproject.video.game.database.api.repository.UserRepository;
 import com.finalproject.video.game.database.api.repository.VideoGameNameRepository;
 
 @Service
@@ -19,12 +18,11 @@ public class GenreService {
 	
 	@Autowired VideoGameNameRepository gameRepo;
 	
-	@Autowired UserRepository userRepo;
 	
 	public Genre createGenre(Genre genre, Long videoGameNameId) throws Exception{
 		VideoGameName game = gameRepo.findById(videoGameNameId).get();
 		if (game == null) {
-			throw new Exception("Genre does not exist.");
+			throw new Exception("Game does not exist.");
 		}
 			return repo.save(genre);
 	}

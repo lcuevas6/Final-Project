@@ -1,16 +1,23 @@
 package com.finalproject.video.game.database.api.entity;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+@Entity
 public class Platform {
 
-	private long id;
+	private Long id;
 	private String gameConsole;
-	private VideoGameName gameId;
+	
+	
+	@JsonIgnore
+	private VideoGameName game;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -30,12 +37,12 @@ public class Platform {
 	
 	@ManyToOne
 	@JoinColumn(name = "gameId")
-	public VideoGameName getGameName() {
-		return gameId;
+	public VideoGameName getVideoGameName() {
+		return game;
 	}
 	
-	public void setGameName(VideoGameName gameName) {
-		this.gameId = gameName;
+	public void setGame(VideoGameName game) {
+		this.game = game;
 	}
 
 	

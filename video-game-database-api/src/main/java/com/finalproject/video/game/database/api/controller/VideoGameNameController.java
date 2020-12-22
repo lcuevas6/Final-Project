@@ -25,7 +25,7 @@ public class VideoGameNameController {
 	
 }
 	
-	@RequestMapping(value="/{id}", method=RequestMethod.GET)
+	@RequestMapping(value="/{gameId}", method=RequestMethod.GET)
 	public ResponseEntity<Object> getVideoGameName(@PathVariable Long id) {
 		try {
 			return new ResponseEntity<Object>(service.getVideoGameName(id), HttpStatus.OK);
@@ -33,8 +33,6 @@ public class VideoGameNameController {
 			return new ResponseEntity<Object>(e.getMessage(), HttpStatus.NOT_FOUND);
 		}
 		}
-	
-	
 	
 	@RequestMapping(method=RequestMethod.POST)
 	public ResponseEntity<Object> createVideoGameName(@RequestBody VideoGameName game, @PathVariable Long userId, @PathVariable  Long videoGameNameId ) {

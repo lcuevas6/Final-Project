@@ -2,14 +2,13 @@ package com.finalproject.video.game.database.api.entity;
 
 import java.util.Set;
 
-import javax.persistence.CascadeType;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -29,7 +28,6 @@ public class VideoGameName {
 	
 	private Set<Review> reviews;
 	
-	private Set<Platform> platforms;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -65,8 +63,7 @@ public class VideoGameName {
 		this.ageGroup = ageGroup;
 	}
 	
-	@OneToMany
-	@JoinColumn(name = "videoGameName")
+	@OneToMany(mappedBy = "review")
 	public Set<Review> getReviews() {
 		return reviews;
 	}
@@ -74,19 +71,9 @@ public class VideoGameName {
 	public void setReviews(Set<Review> reviews) {
 		this.reviews = reviews;
 	}
-	
-	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "platform",
-	joinColumns = @JoinColumn(name = "videoGameNameId", referencedColumnName = "id"),
-	inverseJoinColumns = @JoinColumn(name = "platformId", referencedColumnName = "id"))
-	public Set<Platform> getPlatforms() {
-		return platforms;
-	}
 
-	public void setPlatforms(Set<Platform> platforms) {
-		this.platforms = platforms;
-	}
-
+	@ManyToOne
+	@JoinColumn(name = "userId")
 	public User getUser() {
 		return user;
 	}
@@ -94,8 +81,5 @@ public class VideoGameName {
 	public void setUser(User user) {
 		this.user = user;
 	}
-	
-	
-	
 	
 }

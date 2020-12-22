@@ -15,7 +15,7 @@ import com.finalproject.video.game.database.api.entity.Platform;
 import com.finalproject.video.game.database.api.service.PlatformService;
 
 @RestController
-@RequestMapping("/videoGameNames/{videoGameNameId}/genres")
+@RequestMapping("/videogamename/platform")
 public class PlatformController {
 	
 	@Autowired

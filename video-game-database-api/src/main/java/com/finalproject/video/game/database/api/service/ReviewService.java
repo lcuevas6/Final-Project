@@ -5,6 +5,7 @@ import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
 import com.finalproject.video.game.database.api.entity.Review;
 import com.finalproject.video.game.database.api.entity.VideoGameName;
 import com.finalproject.video.game.database.api.entity.User;
@@ -21,6 +22,23 @@ public class ReviewService {
 	@Autowired VideoGameNameRepository gameRepo;
 	
 	@Autowired UserRepository userRepo;
+	
+	public Iterable<Review> getAllReviews(){
+		return repo.findAll();
+	}
+	
+	public Review getReview(Long reviewId) {
+		return repo.findById(reviewId).get();
+	}
+	
+	public Review updateReview(Review review, Long reviewId) throws Exception{
+		Review foundReview = repo.findById(reviewId).get();
+		if (foundReview == null) {
+			throw new Exception("Review not found.");
+		}
+		foundReview.setContent(review.getContent());
+		return repo.save(foundReview);
+	}
 	
 	public Review createReview(Review review, Long userId, Long gameId) throws Exception{
 		User user = userRepo.findById(userId).get();

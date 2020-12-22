@@ -14,7 +14,7 @@ import com.finalproject.video.game.database.api.entity.Genre;
 import com.finalproject.video.game.database.api.service.GenreService;
 
 @RestController
-@RequestMapping("/videoGameNames/{videoGameNameId}/genres")
+@RequestMapping("/videogamename/genres")
 public class GenreController {
 	
 	@Autowired
