@@ -6,5 +6,6 @@ import com.finalproject.video.game.database.api.entity.VideoGameName;
 
 public interface VideoGameNameRepository extends CrudRepository<VideoGameName, Long> {
 	
+	
 
 }
