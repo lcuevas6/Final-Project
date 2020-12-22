@@ -7,17 +7,17 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 public class Genre {
-	long id;
+	Long id;
 	private String genre;
 	private VideoGameName gameId;
 	
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public String getGenre() {
@@ -28,12 +28,11 @@ public class Genre {
 	}
 	
 	@ManyToOne
-	@JoinColumn(name = "gameId")
+	@JoinColumn(name = "videoGameNameId")
 	public VideoGameName getGameId() {
 		return gameId;
 	}
 	public void setGameId(VideoGameName gameId) {
 		this.gameId = gameId;
 	}
-
 }

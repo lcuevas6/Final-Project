@@ -11,26 +11,22 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.finalproject.video.game.database.api.entity.Platform;
-//import com.finalproject.video.game.database.api.service.PlatformService;
-import com.finalproject.video.game.database.api.entity.Review;
+
 import com.finalproject.video.game.database.api.service.PlatformService;
-import com.finalproject.video.game.database.api.service.ReviewService;
 
 @RestController
-@RequestMapping("/users/{userId}/platform")
+@RequestMapping("/videoGameNames/{videoGameNameId}/genres")
 public class PlatformController {
+	
 	@Autowired
 	private PlatformService service;
 
 	@RequestMapping(method = RequestMethod.POST)
-	public ResponseEntity<Object> createPlatform(@RequestBody Platform platform, @PathVariable Long id)
-			 {
+	public ResponseEntity<Object> createPlatform(@RequestBody Platform platform, @PathVariable Long videoGameNameId) {
 		try {
-			return new ResponseEntity<Object>(service.createPlatform(platform,id, HttpStatus.OK));
+			return new ResponseEntity<Object>(service.createPlatform(platform, videoGameNameId), HttpStatus.OK);
 		} catch (Exception e) {
 			return new ResponseEntity<Object>(e.getMessage(), HttpStatus.BAD_REQUEST);
 		}
 	}
-
-	
 }
