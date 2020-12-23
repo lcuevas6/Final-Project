@@ -7,27 +7,16 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity
 public class VideoGameName {
 
-	
 	private Long id;
-	
-	private VideoGameName game;
-	
+	private String name;
 	private String description;
-	
 	private String ageGroup;
-	
-	private User user;
-	
-	
 	private Set<Review> reviews;
-	
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -39,12 +28,12 @@ public class VideoGameName {
 		this.id = id;
 	}
 	
-	public VideoGameName getGame() {
-		return game;
+	public String getName() {
+		return name;
 	}
 	
-	public void setGame(VideoGameName game) {
-		this.game = game;
+	public void setName(String name) {
+		this.name = name;
 	}
 	
 	public String getDescription() {
@@ -63,7 +52,7 @@ public class VideoGameName {
 		this.ageGroup = ageGroup;
 	}
 	
-	@OneToMany(mappedBy = "review")
+	@OneToMany(mappedBy = "game")
 	public Set<Review> getReviews() {
 		return reviews;
 	}
@@ -72,14 +61,4 @@ public class VideoGameName {
 		this.reviews = reviews;
 	}
 
-	@ManyToOne
-	@JoinColumn(name = "userId")
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
-	
 }

@@ -44,12 +44,7 @@ public class UserController {
 		}
 
 	}
-
-	//(method = RequestMethod.POST)
-	//public ResponseEntity<Object> createUser(@RequestBody User user) {
-	//	return new ResponseEntity<Object>(service.createUser(user), HttpStatus.CREATED);
-	//}
-
+	
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
 	public ResponseEntity<Object> updateUser(@RequestBody User user, @PathVariable Long id) {
 		try {

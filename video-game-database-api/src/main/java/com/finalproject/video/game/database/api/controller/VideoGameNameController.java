@@ -13,7 +13,7 @@ import com.finalproject.video.game.database.api.entity.VideoGameName;
 import com.finalproject.video.game.database.api.service.VideoGameNameService;
 
 @RestController
-@RequestMapping("/users/{userId}/videogamename")
+@RequestMapping("/videoGameNames")
 public class VideoGameNameController {
 	
 	@Autowired
@@ -26,21 +26,17 @@ public class VideoGameNameController {
 }
 	
 	@RequestMapping(value="/{gameId}", method=RequestMethod.GET)
-	public ResponseEntity<Object> getVideoGameName(@PathVariable Long id) {
+	public ResponseEntity<Object> getVideoGameName(@PathVariable Long gameId) {
 		try {
-			return new ResponseEntity<Object>(service.getVideoGameName(id), HttpStatus.OK);
+			return new ResponseEntity<Object>(service.getVideoGameName(gameId), HttpStatus.OK);
 		} catch (Exception e) {
 			return new ResponseEntity<Object>(e.getMessage(), HttpStatus.NOT_FOUND);
 		}
 		}
 	
 	@RequestMapping(method=RequestMethod.POST)
-	public ResponseEntity<Object> createVideoGameName(@RequestBody VideoGameName game, @PathVariable Long userId, @PathVariable  Long videoGameNameId ) {
-		try {
-				return new ResponseEntity<Object>(service.createVideoGameName(game, userId, videoGameNameId), HttpStatus.OK);
-		} catch (Exception e) {
-			return new ResponseEntity<Object>(e.getMessage(), HttpStatus.BAD_REQUEST);
-		}
+	public ResponseEntity<Object> createVideoGameName(@RequestBody VideoGameName game) {
+				return new ResponseEntity<Object>(service.createVideoGameName(game), HttpStatus.CREATED);
 		
 }
 }

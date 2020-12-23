@@ -31,7 +31,6 @@ public class UserService {
 		}
 	}
 	
-	
 	public User createUser(User user) {
 		return repo.save(user);
 	}

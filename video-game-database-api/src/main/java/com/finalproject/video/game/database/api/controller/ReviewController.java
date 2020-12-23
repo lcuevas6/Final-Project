@@ -13,7 +13,7 @@ import com.finalproject.video.game.database.api.entity.Review;
 import com.finalproject.video.game.database.api.service.ReviewService;
 
 @RestController
-@RequestMapping("/users/{userId}/reviews")
+@RequestMapping("/users/{userId}/videGameNames/{gameId}/reviews")
 public class ReviewController {
 
 	@Autowired

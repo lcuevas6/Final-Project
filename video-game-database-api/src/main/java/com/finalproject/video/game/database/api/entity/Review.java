@@ -50,7 +50,7 @@ public class Review {
 
 	@ManyToOne
 	@JoinColumn(name = "gameId")
-	public VideoGameName getVideoGameName() {
+	public VideoGameName getGame() {
 		return game;
 	}
 
