@@ -49,7 +49,7 @@ public class Review {
 	}
 
 	@ManyToOne
-	@JoinColumn(name = "gameId")
+	@JoinColumn(name = "game")
 	public VideoGameName getGame() {
 		return game;
 	}

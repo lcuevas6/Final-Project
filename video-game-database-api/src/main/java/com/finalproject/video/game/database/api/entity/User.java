@@ -48,10 +48,10 @@ public class User {
 		@JsonProperty
 		public void setPassword(String password) {
 			this.password = password;
-		}
-		
-		@OneToMany(mappedBy = "user")
-		public Set<Review> getReviews() {
+	}
+	
+	@OneToMany(mappedBy = "user")
+	public Set<Review> getReviews() {
 			return reviews;
 		}
 		
