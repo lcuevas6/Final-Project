@@ -32,10 +32,10 @@ public class Platform {
 	}
 	public void setGameConsole(String gameConsole) {
 		this.gameConsole = gameConsole;
-//	}
+	//}
 	
-//	@ManyToOne
-//	@JoinColumn(name = "gameId")
+//	@ManyToMany
+//	@JoinColumn(name = "game")
 //	public VideoGameName getGame() {
 //		return game;
 //	}

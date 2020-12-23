@@ -23,5 +23,9 @@ public class GenreService {
 	public Genre createGenre(Genre genre) {
 		return repo.save(genre);
 	}
+	
+	public void deleteGenre(Long genreId) {
+		repo.deleteById(genreId);
+	}	
 
 }

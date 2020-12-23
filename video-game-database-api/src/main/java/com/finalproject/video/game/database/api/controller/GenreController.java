@@ -3,6 +3,7 @@ package com.finalproject.video.game.database.api.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -27,6 +28,12 @@ public class GenreController {
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<Object> createGenre(@RequestBody Genre genre){
 			return new ResponseEntity<Object>(service.createGenre(genre), HttpStatus.CREATED);
+	}
+	
+	@RequestMapping(value = "/{genreId}", method = RequestMethod.DELETE)
+	public ResponseEntity<Object> deleteGenre(@PathVariable Long genreId) {
+		service.deleteGenre(genreId);
+		return new ResponseEntity<Object>("Deleted genre with id:" + genreId, HttpStatus.OK);
 	}
 
 }

@@ -24,5 +24,7 @@ public class PlatformService {
 	
 		}
 		
-		
+		public void deletePlatform(Long platformId) {
+			repo.deleteById(platformId);
+		}	
 }

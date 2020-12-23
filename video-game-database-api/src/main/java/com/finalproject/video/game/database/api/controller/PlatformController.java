@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -28,5 +29,11 @@ public class PlatformController {
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<Object> createPlatform(@RequestBody Platform platform) {
 			return new ResponseEntity<Object>(service.createPlatform(platform), HttpStatus.CREATED);
+	}
+	
+	@RequestMapping(value = "/{platformId}", method = RequestMethod.DELETE)
+	public ResponseEntity<Object> deleteReview(@PathVariable Long platformId) {
+		service.deletePlatform(platformId);
+		return new ResponseEntity<Object>("Deleted platform with id:" + platformId, HttpStatus.OK);
 	}
 }

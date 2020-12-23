@@ -39,6 +39,10 @@ public class VideoGameNameController {
 				return new ResponseEntity<Object>(service.createVideoGameName(game), HttpStatus.CREATED);
 		
 }
+	@RequestMapping(value = "/{gameId}", method = RequestMethod.DELETE)
+	public ResponseEntity<Object> deleteGame(@PathVariable Long gameId) {
+		service.deleteVideoGameName(gameId);
+		return new ResponseEntity<Object>("Deleted game with id:" + gameId, HttpStatus.OK);
 }
-
+}
 

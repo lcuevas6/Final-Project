@@ -18,13 +18,17 @@ public class VideoGameNameService {
 		return repo.findAll();
 	}
 	
-	public VideoGameName getVideoGameName(Long videoGameNameId) {
-		return repo.findById(videoGameNameId).get();
+	public VideoGameName getVideoGameName(Long gameId) {
+		return repo.findById(gameId).get();
 	}
 	
 	public VideoGameName createVideoGameName(VideoGameName videoGameName) {
 		return repo.save(videoGameName);
 		
 	}
+	
+	public void deleteVideoGameName(Long gameId) {
+		repo.deleteById(gameId);
+	}	
 
 }
