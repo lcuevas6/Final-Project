@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.finalproject.video.game.database.api.entity.Genre;
-
 import com.finalproject.video.game.database.api.service.GenreService;
 
 @RestController
@@ -30,6 +29,15 @@ public class GenreController {
 			return new ResponseEntity<Object>(service.createGenre(genre), HttpStatus.CREATED);
 	}
 	
+	@RequestMapping(value = "/{genreId}", method = RequestMethod.PUT)
+	public ResponseEntity<Object> updateGenre(@RequestBody Genre genre, @PathVariable Long id) {
+		try {
+			return new ResponseEntity<Object>(service.updateGenre(genre, id), HttpStatus.OK);
+		} catch (Exception e) {
+			return new ResponseEntity<Object>(e.getMessage(), HttpStatus.NOT_FOUND);
+		}
+	}
+
 	@RequestMapping(value = "/{genreId}", method = RequestMethod.DELETE)
 	public ResponseEntity<Object> deleteGenre(@PathVariable Long genreId) {
 		service.deleteGenre(genreId);

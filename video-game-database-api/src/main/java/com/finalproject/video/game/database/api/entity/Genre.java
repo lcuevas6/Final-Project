@@ -1,10 +1,12 @@
 package com.finalproject.video.game.database.api.entity;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
+import javax.persistence.ManyToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -30,14 +32,8 @@ public class Genre {
 	}
 	public void setGenre(String genre) {
 		this.genre = genre;
-//	}
-//	
-//	@ManyToMany
-//	@JoinColumn(name = "game")
-//	public VideoGameName getGame() {
-//		return game;
-//	}
-//	public void setGame(VideoGameName game) {
-//		this.game = game;
 	}
+		@ManyToMany(mappedBy = "genres")
+	    public List<VideoGameName> games;
 }
+

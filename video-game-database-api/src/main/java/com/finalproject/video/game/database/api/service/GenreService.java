@@ -24,6 +24,15 @@ public class GenreService {
 		return repo.save(genre);
 	}
 	
+	public Genre updateGenre(Genre genre, Long genreId) throws Exception{
+		Genre foundGenre = repo.findById(genreId).get();
+		if (foundGenre == null) {
+			throw new Exception("Genre not found.");
+		}
+		foundGenre.setGenre(genre.getGenre());
+		return repo.save(foundGenre);
+	}
+	
 	public void deleteGenre(Long genreId) {
 		repo.deleteById(genreId);
 	}	
