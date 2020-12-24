@@ -13,6 +13,7 @@ import com.finalproject.video.game.database.api.entity.Genre;
 import com.finalproject.video.game.database.api.service.GenreService;
 
 @RestController
+
 @RequestMapping("/genres")
 public class GenreController {
 	

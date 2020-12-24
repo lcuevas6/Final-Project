@@ -1,6 +1,7 @@
 package com.finalproject.video.game.database.api.entity;
 
-import java.util.List;
+
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,16 +9,16 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 @Entity
 public class Genre {
 	private Long id;
 	private String genre;
+	private Set<VideoGameName> games;
 
 	
-	@JsonIgnore
-	private VideoGameName game;
+
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -33,7 +34,12 @@ public class Genre {
 	public void setGenre(String genre) {
 		this.genre = genre;
 	}
-		@ManyToMany(mappedBy = "genres")
-	    public List<VideoGameName> games;
+	@ManyToMany(mappedBy = "genres")
+	public Set<VideoGameName> getGames(){
+			return games;
+		}
+	public void setGames(Set<VideoGameName> games) {
+		this.games = games;
+	}
 }
 

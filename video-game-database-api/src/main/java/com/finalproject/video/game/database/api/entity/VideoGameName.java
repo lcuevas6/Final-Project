@@ -1,6 +1,6 @@
 package com.finalproject.video.game.database.api.entity;
 
-import java.util.List;
+
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -22,6 +22,7 @@ public class VideoGameName {
 	private String description;
 	private String ageGroup;
 	private Set<Review> reviews;
+	private Set<Genre> genres;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -68,7 +69,13 @@ public class VideoGameName {
 	
 	@ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "game_genre", 
-      joinColumns = @JoinColumn(name = "genreId", referencedColumnName = "id"), 
-      inverseJoinColumns = @JoinColumn(name = "gameId", referencedColumnName = "id"))
-    public List<Genre> genres;
+      joinColumns = @JoinColumn(name = "genre_id", referencedColumnName = "id"), 
+      inverseJoinColumns = @JoinColumn(name = "game_Id", referencedColumnName = "id"))
+    public Set<Genre> getGenres(){
+		return genres;
+	}
+	
+	public void setGenres(Set<Genre> genres) {
+		this.genres = genres;
+	}
 }
