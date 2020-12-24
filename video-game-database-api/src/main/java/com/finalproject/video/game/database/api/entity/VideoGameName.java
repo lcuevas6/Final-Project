@@ -3,13 +3,10 @@ package com.finalproject.video.game.database.api.entity;
 
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinTable;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
@@ -67,11 +64,8 @@ public class VideoGameName {
 		this.reviews = reviews;
 	}
 	
-	@ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "game_genre", 
-      joinColumns = @JoinColumn(name = "genre_id", referencedColumnName = "id"), 
-      inverseJoinColumns = @JoinColumn(name = "game_Id", referencedColumnName = "id"))
-    public Set<Genre> getGenres(){
+	@ManyToMany(mappedBy = "games")
+	public Set<Genre> getGenres(){
 		return genres;
 	}
 	

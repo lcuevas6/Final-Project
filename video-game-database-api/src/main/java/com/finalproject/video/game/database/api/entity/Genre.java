@@ -3,11 +3,16 @@ package com.finalproject.video.game.database.api.entity;
 
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 
@@ -15,9 +20,9 @@ import javax.persistence.ManyToMany;
 public class Genre {
 	private Long id;
 	private String genre;
-	private Set<VideoGameName> games;
-
 	
+	@JsonIgnore
+	private Set<VideoGameName> games;
 
 	
 	@Id
@@ -34,10 +39,15 @@ public class Genre {
 	public void setGenre(String genre) {
 		this.genre = genre;
 	}
-	@ManyToMany(mappedBy = "genres")
-	public Set<VideoGameName> getGames(){
-			return games;
-		}
+	
+	@ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "genre_type", 
+      joinColumns = @JoinColumn(name = "gameId", referencedColumnName = "id"), 
+      inverseJoinColumns = @JoinColumn(name = "genreId", referencedColumnName = "id"))
+    public Set<VideoGameName> getGames(){
+		return games;
+	}
+	
 	public void setGames(Set<VideoGameName> games) {
 		this.games = games;
 	}
