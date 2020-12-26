@@ -67,8 +67,8 @@ public class VideoGameName {
 		this.reviews = reviews;
 	}
 	
-	@ManyToMany(mappedBy = "games")
-	public Set<Genre> getGenres(){
+	@ManyToMany(targetEntity = Genre.class, cascade = {CascadeType.PERSIST, CascadeType.DETACH,CascadeType.MERGE,CascadeType.REFRESH} )
+	public Set<Genre> getGenres() {
 		return genres;
 	}
 	

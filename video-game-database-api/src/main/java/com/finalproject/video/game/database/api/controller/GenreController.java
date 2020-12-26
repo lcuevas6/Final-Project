@@ -24,24 +24,21 @@ public class GenreController {
 	public ResponseEntity<Object> getGenres(){
 		return new ResponseEntity<Object>(service.getGenres(), HttpStatus.OK);
 	}
+	
+	@RequestMapping(value="/{genreId}", method=RequestMethod.GET)
+	public ResponseEntity<Object> getGenre(@PathVariable Long id){
+			return new ResponseEntity<Object>(service.getGenre(id), HttpStatus.OK);
+	}
 
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<Object> createGenre(@RequestBody Genre genre){
 			return new ResponseEntity<Object>(service.createGenre(genre), HttpStatus.CREATED);
 	}
-	
-	@RequestMapping(value ="/{genreId}", method=RequestMethod.PUT)
-	public ResponseEntity<Object> updateGenre(@RequestBody Genre genre, @PathVariable Long genreId){
-		try {
-			return new ResponseEntity<Object>(service.updateGenre(genre, genreId), HttpStatus.OK);
-		}catch (Exception e) {
-			return new ResponseEntity<Object>("Unable to update genre.", HttpStatus.BAD_REQUEST);
-		}
-	}
+
 	@RequestMapping(value = "/{genreId}", method = RequestMethod.DELETE)
-	public ResponseEntity<Object> deleteGenre(@PathVariable Long genreId) {
-		service.deleteGenre(genreId);
-		return new ResponseEntity<Object>("Deleted genre with id:" + genreId, HttpStatus.OK);
+	public ResponseEntity<Object> deleteGenre(@PathVariable Long id) {
+		service.deleteGenre(id);
+		return new ResponseEntity<Object>("Deleted genre with id:" + id, HttpStatus.OK);
 	}
 
 }

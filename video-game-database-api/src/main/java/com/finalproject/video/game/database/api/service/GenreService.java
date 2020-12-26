@@ -17,17 +17,12 @@ public class GenreService {
 		return repo.findAll();
 	}
 	
-	public Genre createGenre(Genre genre) {
-		return repo.save(genre);
+	public Genre getGenre(Long genreId) {
+		return repo.findById(genreId).get();
 	}
 	
-	public Genre updateGenre(Genre genre, Long genreId) throws Exception{
-		Genre foundGenre = repo.findById(genreId).get();
-		if (foundGenre == null) {
-			throw new Exception("Genre not found.");
-		}
-		foundGenre.setGenre(genre.getGenre());
-		return repo.save(foundGenre);
+	public Genre createGenre(Genre genre) {
+		return repo.save(genre);
 	}
 	
 	public void deleteGenre(Long genreId) {

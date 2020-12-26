@@ -9,11 +9,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Platform {
 
 	private Long id;
 	private String platform;
+	
+	@JsonIgnore
 	private Set<VideoGameName> games;
 	
 	@Id

@@ -8,8 +8,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -40,15 +38,12 @@ public class Genre {
 		this.genre = genre;
 	}
 	
-	@ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "genre_type", 
-      joinColumns = @JoinColumn(name = "gameId", referencedColumnName = "id"), 
-      inverseJoinColumns = @JoinColumn(name = "genreId", referencedColumnName = "id"))
-    public Set<VideoGameName> getGames(){
+	@ManyToMany(targetEntity = VideoGameName.class, mappedBy = "genres", cascade = {CascadeType.PERSIST, CascadeType.DETACH,CascadeType.MERGE,CascadeType.REFRESH})
+	public Set<VideoGameName> getGames(){
 		return games;
 	}
 	
-	public void setGames(Set<VideoGameName> games) {
+	public void setGames(Set<VideoGameName>games) {
 		this.games = games;
 	}
 }

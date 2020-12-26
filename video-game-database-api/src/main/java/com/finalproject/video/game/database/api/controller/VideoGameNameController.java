@@ -46,16 +46,7 @@ public class VideoGameNameController {
 		service.deleteVideoGameName(id);
 		return new ResponseEntity<Object>("Deleted game with id:" + id, HttpStatus.OK);
 }
-	
-	@RequestMapping(value = "/{id}/genres/{genreId}", method = RequestMethod.PUT)
-	public ResponseEntity<Object> genreType(@PathVariable Long gameId, @PathVariable Long genreId){
-		try {
-			return new ResponseEntity<Object>(service.genreType(gameId, genreId), HttpStatus.CREATED);
-		} catch (Exception e) {
-			return new ResponseEntity<Object>(e.getMessage(), HttpStatus.BAD_REQUEST);
 }
-	}
 	
-}
 
 
