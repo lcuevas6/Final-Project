@@ -5,10 +5,12 @@ package com.finalproject.video.game.database.api.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
 import com.finalproject.video.game.database.api.entity.Genre;
 import com.finalproject.video.game.database.api.entity.VideoGameName;
 import com.finalproject.video.game.database.api.repository.VideoGameNameRepository;
 import com.finalproject.video.game.database.api.repository.GenreRepository;
+import com.finalproject.video.game.database.api.repository.PlatformRepository;
 
 @Service
 public class VideoGameNameService {
@@ -18,6 +20,8 @@ public class VideoGameNameService {
 	
 	@Autowired
 	private GenreRepository genreRepo;
+	
+	@Autowired PlatformRepository platformRepo;
 	
 	
 	public Iterable<VideoGameName> getAllGameNames() {
@@ -44,6 +48,7 @@ public class VideoGameNameService {
 			throw new Exception("Game does not exist.");
 		}
 		return game;
-}
-}
+		
+		}
+	}
 

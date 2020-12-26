@@ -1,22 +1,25 @@
 package com.finalproject.video.game.database.api.entity;
 
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+
+
+
 
 @Entity
 public class Platform {
 
 	private Long id;
-	private String gameConsole;
-	
-	
-	@JsonIgnore
-	private VideoGameName game;
+	private String platform;
+	private Set<VideoGameName> games;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -27,21 +30,21 @@ public class Platform {
 		this.id = id;
 	}
 	
-	public String getGameConsole() {
-		return gameConsole;
+	public String getPlatform() {
+		return platform;
 	}
-	public void setGameConsole(String gameConsole) {
-		this.gameConsole = gameConsole;
-	//}
+	public void setPlatform(String platform) {
+		this.platform = platform;
+	}
 	
-//	@ManyToMany
-//	@JoinColumn(name = "game")
-//	public VideoGameName getGame() {
-//		return game;
-//	}
-//	
-//	public void setGame(VideoGameName game) {
-//		this.game = game;
+	@ManyToMany(targetEntity = VideoGameName.class, mappedBy = "platforms", cascade = {CascadeType.PERSIST, CascadeType.DETACH,CascadeType.MERGE,CascadeType.REFRESH})
+	public Set<VideoGameName> getGames(){
+		return games;
 	}
-
+	
+	public void setGames(Set<VideoGameName>games) {
+		this.games = games;
+	}
 }
+
+

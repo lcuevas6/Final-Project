@@ -1,5 +1,7 @@
 package com.finalproject.video.game.database.api.controller;
 
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,10 +27,10 @@ public class VideoGameNameController {
 	
 }
 	
-	@RequestMapping(value="/{gameId}", method=RequestMethod.GET)
-	public ResponseEntity<Object> getVideoGameName(@PathVariable Long gameId) {
+	@RequestMapping(value="/{id}", method=RequestMethod.GET)
+	public ResponseEntity<Object> getVideoGameName(@PathVariable Long id) {
 		try {
-			return new ResponseEntity<Object>(service.getVideoGameName(gameId), HttpStatus.OK);
+			return new ResponseEntity<Object>(service.getVideoGameName(id), HttpStatus.OK);
 		} catch (Exception e) {
 			return new ResponseEntity<Object>(e.getMessage(), HttpStatus.NOT_FOUND);
 		}
@@ -39,19 +41,21 @@ public class VideoGameNameController {
 				return new ResponseEntity<Object>(service.createVideoGameName(game), HttpStatus.CREATED);
 		
 }
-	@RequestMapping(value = "/{gameId}", method = RequestMethod.DELETE)
-	public ResponseEntity<Object> deleteGame(@PathVariable Long gameId) {
-		service.deleteVideoGameName(gameId);
-		return new ResponseEntity<Object>("Deleted game with id:" + gameId, HttpStatus.OK);
+	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+	public ResponseEntity<Object> deleteGame(@PathVariable Long id) {
+		service.deleteVideoGameName(id);
+		return new ResponseEntity<Object>("Deleted game with id:" + id, HttpStatus.OK);
 }
 	
-	@RequestMapping(value = "/{gameId}/genres/{genreId}", method = RequestMethod.PUT)
+	@RequestMapping(value = "/{id}/genres/{genreId}", method = RequestMethod.PUT)
 	public ResponseEntity<Object> genreType(@PathVariable Long gameId, @PathVariable Long genreId){
 		try {
 			return new ResponseEntity<Object>(service.genreType(gameId, genreId), HttpStatus.CREATED);
 		} catch (Exception e) {
 			return new ResponseEntity<Object>(e.getMessage(), HttpStatus.BAD_REQUEST);
 }
+	}
+	
 }
-}
+
 

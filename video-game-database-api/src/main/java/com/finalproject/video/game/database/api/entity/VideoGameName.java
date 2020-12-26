@@ -3,12 +3,14 @@ package com.finalproject.video.game.database.api.entity;
 
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+
 
 
 @Entity
@@ -19,6 +21,7 @@ public class VideoGameName {
 	private String description;
 	private String ageGroup;
 	private Set<Review> reviews;
+	private Set<Platform> platforms;
 	private Set<Genre> genres;
 	
 	@Id
@@ -72,4 +75,13 @@ public class VideoGameName {
 	public void setGenres(Set<Genre> genres) {
 		this.genres = genres;
 	}
+	
+	@ManyToMany(targetEntity = Platform.class, cascade = {CascadeType.PERSIST, CascadeType.DETACH,CascadeType.MERGE,CascadeType.REFRESH} )
+	public Set<Platform> getPlatforms() {
+		return platforms;
+	}
+
+	public void setPlatforms(Set<Platform> platforms) {
+		this.platforms = platforms;
+}
 }

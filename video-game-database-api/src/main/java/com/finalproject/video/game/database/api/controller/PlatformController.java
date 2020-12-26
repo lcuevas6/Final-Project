@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.finalproject.video.game.database.api.entity.Platform;
-
 import com.finalproject.video.game.database.api.service.PlatformService;
 
 @RestController
@@ -26,14 +25,19 @@ public class PlatformController {
 		return new ResponseEntity<Object>(service.getPlatforms(), HttpStatus.OK);
 	}
 	
+	@RequestMapping(value="/{platformId}", method=RequestMethod.GET)
+	public ResponseEntity<Object> getPlatform(@PathVariable Long id){
+			return new ResponseEntity<Object>(service.getPlatform(id), HttpStatus.OK);
+	}
+
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<Object> createPlatform(@RequestBody Platform platform) {
-			return new ResponseEntity<Object>(service.createPlatform(platform), HttpStatus.CREATED);
-	}
+			return new ResponseEntity<Object>(service.createPlatform(platform), HttpStatus.OK);
+		}
 	
 	@RequestMapping(value = "/{platformId}", method = RequestMethod.DELETE)
-	public ResponseEntity<Object> deleteReview(@PathVariable Long platformId) {
-		service.deletePlatform(platformId);
-		return new ResponseEntity<Object>("Deleted platform with id:" + platformId, HttpStatus.OK);
+	public ResponseEntity<Object> deletePlatform(@PathVariable Long id) {
+		service.deletePlatform(id);
+		return new ResponseEntity<Object>("Deleted platform with id:" + id, HttpStatus.OK);
 	}
 }
