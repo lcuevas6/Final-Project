@@ -1,6 +1,7 @@
 # Video Game Database
 The purpose of this app is for users to create, review and view video game information. Users can also create genres and platforms and associate them with a video game. 
 
+https://github.com/lcuevas6/Video-Game-Database-Final-Project/blob/main/Entity%20Diagram.png
 
 ## User Requests
 * POST http://localhost:8080/users/register
