@@ -29,4 +29,8 @@ The purpose of this app is for users to create, review and view video game infor
 * POST http://localhost:8080/platforms
 * GET http://localhost:8080/platforms/{platformId}
 * PUT http://localhost:8080/platforms/{platformId}
+<<<<<<< HEAD
 * DELETE http://localhost:8080/platforms/{platformId}
+=======
+* DELETE http://localhost:8080/platforms/{platformId}
+>>>>>>> a19e2eebc47b2922c184bd119908abda12844a55
