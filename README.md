@@ -2,8 +2,8 @@
 The purpose of this app is for users to create, view and review video game information. Users can also create genres and platforms and associate them with a video game. 
 
 ## Requirements
-JDK 1.8
-Maven 4
+* JDK 1.8
+* Maven 4
 
 ## Running application locally
 There are multiple ways to run a Spring Boot application on your local machine. One way is to execute the main method in the VideoGameDatabaseApiApplication.java class from your IDE.
